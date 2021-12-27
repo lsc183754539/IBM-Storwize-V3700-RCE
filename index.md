@@ -63,7 +63,10 @@ if __name__ == '__main__':
         cmd = sys.argv[2]
         print("[*] cmd: %s\n" % cmd)
         exploit(url, cmd)
-```
+```  
+
+![image](https://user-images.githubusercontent.com/28224012/147428237-621016c6-4886-468e-8c40-2c3e16aeac08.png)
+
 ![Attack succeeded image](https://user-images.githubusercontent.com/28224012/147313740-7dcd7e16-3f68-47e7-8c09-ecc6a120ea59.png)
 
 - **Example vulnerability URL:** `https://160.99.1.218/service/` `https://211.170.78.84/service/` `https://148.216.53.36/service/` .etc
